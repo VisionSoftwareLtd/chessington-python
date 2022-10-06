@@ -35,7 +35,14 @@ class Pawn(Piece):
     """
 
     def get_available_moves(self, board):
-        return []
+        validMoves = []
+        currentSquare = board.find_piece(self)
+        if self.player == Player.WHITE:
+            oneForward = Square.at(currentSquare.row + 1, currentSquare.col)
+        else:
+            oneForward = Square.at(currentSquare.row - 1, currentSquare.col)
+        validMoves.append(oneForward)
+        return validMoves
 
 
 class Knight(Piece):
